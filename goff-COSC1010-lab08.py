@@ -14,6 +14,25 @@
 # Other wise return the converted int or float 
 # Floats should only have one decimal point in them 
 
+def conversion(num):
+    isneg = False
+    if num[0] == "-":
+        isneg = True
+        num = num.replace("-","")
+    if "." in num:
+        num_dec = num.split(".")
+        if len(num_dec) == 2 and num_dec[0].isdigit() and num_dec[1].isdigit():
+            if isneg:
+                return -1*float(num)
+            else:
+                return float(num)
+    elif num.isdigit():
+        if isneg :
+            return -1*(num)
+        else:
+            return int(num)
+    else:
+        return False
 
 print("*" * 75)
 
@@ -38,22 +57,44 @@ print("*" * 75)
 # Remember all inputs are strings, but the function needs ints or floats
 # Call your function and print the resulting list
 
-while True:
-    m_input = input("Give me a value for a slope.")
-    b_input = input("Give me a value for a y-intercpet")
-    up_input = input("Give me a lower bound")
-    lo_input = input("Give me an upper bound")
 
-    if m_input.upper() == "EXIT":
-        break
-
-    inputs = {'m':'m_input','b':'b_input','upper':'up_input','lower':'lo_input'}
-
-
-    for inputs in inputs.values():
-        if input.upper() == "EXIT":
+def slope_intercept():
+    while True:
+        m = input("Give me a value for a slope")
+        if m.upper() == "EXIT":
             break
+        else:
+            m = conversion(m)
+        b = input("Give me a number for a y-intercept")
+        if b.upper() == "EXIT":
+            break
+        else:
+            b = conversion(b)
+        lower = input("Give me a number for a lower bound")
+        if lower.upper() == "EXIT":
+            break
+        else:
+            lower = conversion(lower)
+        upper = input("Give me a value for an upper bound")
+        if upper.upper() == "EXIT":
+            break
+        else:
+           upper = conversion(upper)
+        if lower >= upper:
+            print("Make sure lower bound is less than upperbound")
+            lower = input("Give me a number for a lower bound")
 
+
+slope_intercept()
+
+point_slope = "y={m}x+{b}"
+print(point_slope)
+
+y_values = []
+
+for i in range(lower_bound, upper_bound +1):
+
+    y_values.append(m(i)+b)
 
 
 
