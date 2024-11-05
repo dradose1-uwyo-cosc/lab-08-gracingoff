@@ -1,8 +1,8 @@
-# Your Name Here
+# Gracin Goff
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section:
+# 11/05/2024
+# Lab 08
+# Lab Section: 10
 # Sources, people worked with, help given to:
 # your
 # comments
@@ -37,6 +37,25 @@ print("*" * 75)
 # Exit on the word exit
 # Remember all inputs are strings, but the function needs ints or floats
 # Call your function and print the resulting list
+
+while True:
+    m_input = input("Give me a value for a slope.")
+    b_input = input("Give me a value for a y-intercpet")
+    up_input = input("Give me a lower bound")
+    lo_input = input("Give me an upper bound")
+
+    if m_input.upper() == "EXIT":
+        break
+
+    inputs = {'m':'m_input','b':'b_input','upper':'up_input','lower':'lo_input'}
+
+
+    for inputs in inputs.values():
+        if input.upper() == "EXIT":
+            break
+
+
+
 
 print("*" * 75)
 
