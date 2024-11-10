@@ -58,31 +58,36 @@ print("*" * 75)
 # Call your function and print the resulting list
 
 
-def slope_intercept():
-    while True:
-        m = input("Give me a value for a slope")
-        if m.upper() == "EXIT":
-            break
-        else:
-            m = conversion(m)
-        b = input("Give me a number for a y-intercept")
-        if b.upper() == "EXIT":
-            break
-        else:
-            b = conversion(b)
-        lower = input("Give me a number for a lower bound")
-        if lower.upper() == "EXIT":
-            break
-        else:
-            lower = conversion(lower)
-        upper = input("Give me a value for an upper bound")
-        if upper.upper() == "EXIT":
-            break
-        else:
-           upper = conversion(upper)
-        if lower >= upper:
-            print("Make sure lower bound is less than upperbound")
-            lower = input("Give me a number for a lower bound")
+def slope_intercept(m,b,low,up):
+    y-values = []
+    for in x range(low,up+1):
+        y = m*x + b 
+        y_values.append(y)
+    return y_values
+
+
+
+while True:
+    values = input('enter slope, intercept, lower and upper bound, in format : m,b,low,up , enter exit to leave program'):
+    if values.lower() == "exit":
+        print("exiting program")
+        break 
+    values = values.replace(' ','').split(',')
+    m = conversion(values[0])
+    b = conversion(values[1])
+    low = conversion(values[2])
+    up = conversion(values[3])
+    if up < low:
+        print('lower bound is greater than upper bound, please try again.')
+        continue 
+    elif '.' in values[2] or '.' in values[3]:
+        print('bounds must be integers, please try again.')
+        continue 
+    else:
+        print(slope_intercept(m,b,low,up))
+
+
+
 
 
 slope_intercept()
