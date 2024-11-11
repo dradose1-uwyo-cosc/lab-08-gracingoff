@@ -1,6 +1,6 @@
 # Gracin Goff
 # UWYO COSC 1010
-# 11/05/2024
+# 11/10/2024
 # Lab 08
 # Lab Section: 10
 # Sources, people worked with, help given to:
@@ -59,8 +59,8 @@ print("*" * 75)
 
 
 def slope_intercept(m,b,low,up):
-    y-values = []
-    for in x range(low,up+1):
+    y_values = []
+    for x in range(low,up+1):
         y = m*x + b 
         y_values.append(y)
     return y_values
@@ -68,7 +68,7 @@ def slope_intercept(m,b,low,up):
 
 
 while True:
-    values = input('enter slope, intercept, lower and upper bound, in format : m,b,low,up , enter exit to leave program'):
+    values = input('enter slope, intercept, lower and upper bound, in format : m,b,low,up , enter exit to leave program')
     if values.lower() == "exit":
         print("exiting program")
         break 
@@ -87,22 +87,6 @@ while True:
         print(slope_intercept(m,b,low,up))
 
 
-
-
-
-slope_intercept()
-
-point_slope = "y={m}x+{b}"
-print(point_slope)
-
-y_values = []
-
-for i in range(lower_bound, upper_bound +1):
-
-    y_values.append(m(i)+b)
-
-
-
 print("*" * 75)
 
 
@@ -113,3 +97,31 @@ print("*" * 75)
 # Create a loop like above to prompt the user for input for the three values
 # Create a second function that just does the square root operation 
     # If the number you are trying to take the square root of is negative, return null
+
+def squ(number):
+    square_root = number**(1/2)
+    return square_root 
+
+def roots(a,b,c):
+    discrim = (b**2) - 4*a*c 
+    if discrim < 0:
+        return None
+    elif discrim > 0:
+        x1 = (-1*b + squ(discrim))/(2*a)
+        x2 = (-1*b + squ(discrim))/(2*a)
+        return f'{x1:.2f}',f'{x2:.2f}'
+    elif discrim == 0:
+        x = (-b/(2*a))
+        return f'{x:.2f}'
+
+
+while True:
+    vals = input('enter three values in the format: a,b,c to return the roots of')
+    if vals.lower() == 'exit':
+        print('exiting program')
+        break
+    vals = vals.replace(' ','').split(',')
+    a = conversion(vals[0])
+    b = conversion(vals[1])
+    c = conversion(vals[2])
+    print(roots(a,b,c))
